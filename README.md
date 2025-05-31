@@ -1,6 +1,3 @@
-Sure! Here’s a **simpler, cleaner, and more unique version** of your README — focused on clarity, with less buzzwords, a lighter tone, and trimmed sections.
-
----
 
 # IoT Device Management API
 
@@ -37,7 +34,7 @@ A lightweight Spring Boot API to register, monitor, and control IoT devices. Des
 
 ---
 
-## Tech Stack
+## Tech Version
 
 * Java 17, Spring Boot 3
 * Spring Data JPA (H2 in-memory DB)
@@ -64,8 +61,6 @@ A lightweight Spring Boot API to register, monitor, and control IoT devices. Des
 ---
 
 ## ️ Getting Started
-
-### Prerequisites
 
 * Java 17
 * Maven
