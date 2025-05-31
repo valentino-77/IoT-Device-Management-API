@@ -5,7 +5,7 @@ import com.iot.deviceapi.service.AlertService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.iot.deviceapi.service.AlertService;
+
 import java.util.List;
 
 

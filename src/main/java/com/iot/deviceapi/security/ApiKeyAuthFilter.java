@@ -27,7 +27,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {System.out.println("\n=== Processing Request ===");
-        if (request.getRequestURI().startsWith("/h2-console") ||
+        if (request.getRequestURI().startsWith("/h2-console") || //Skipping auth for H2 console and device registration
                 ("POST".equalsIgnoreCase(request.getMethod()) && "/devices".equals(request.getRequestURI()))) {
             filterChain.doFilter(request, response);
             return;
@@ -45,13 +45,14 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
         Collections.list(request.getHeaderNames()).forEach(header ->
                 System.out.println(header + ": " + request.getHeader(header)));
 
-
+        //validating the API Key
         String apiKey = request.getHeader("X-API-Key");
         if (apiKey == null || !VALID_API_KEY.equals(apiKey)) {
             sendError(response, "Invalid API Key");
             return;
         }
 
+        //validating the device token
         String deviceId = null;
         if (requiresDeviceAuth(request)) {
             deviceId = extractDeviceId(request);
@@ -74,10 +75,12 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
                 return;
             }
         }
+
+        //setting authentication context
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                 "system",
                 null,
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_SYSTEM"))
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_SYSTEM")) //assigning system role
         );
         SecurityContextHolder.getContext().setAuthentication(auth);
 

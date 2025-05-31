@@ -24,9 +24,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/devices").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .anyRequest().hasAuthority("ROLE_SYSTEM") // Updated to match new role
+                        .requestMatchers(HttpMethod.POST, "/devices").permitAll() //opens registration to all
+                        .requestMatchers("/h2-console/**").permitAll() //opens h2 console to all
+                        .anyRequest().hasAuthority("ROLE_SYSTEM") //securing all other endpoints
                 )
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
