@@ -175,10 +175,18 @@ Example:
 ## Roadmap
 
 * Add Swagger/OpenAPI docs
-* Heartbeat monitoring
-* Alert notifications (email/SMS)
-* Historical data archiving
-* Role-based access control
-* Rate limiting
+
+* Motion and event recording system
+
+* Video snapshot or clip retrieval via API
+
+* Cloud storage integration for media files
+
+* Alert notifications (motion detected, camera offline)
+
+* Historical event search and filtering
+
+* Role-based access control (admin/operator/viewer)
+
 
 ---
